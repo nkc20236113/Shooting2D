@@ -7,10 +7,12 @@ public class PlayerControuller : MonoBehaviour
 {
     Vector3 dir = Vector3.zero;//ˆÚ“®•ûŒü‚ğ•Û‘¶‚·‚é•Ï”
 
+    Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -29,5 +31,19 @@ public class PlayerControuller : MonoBehaviour
         pos.y = Mathf.Clamp(pos.y, -5f, 5f);
         transform.position = pos;
 
+        if(dir.y==0)
+        {
+            anim.Play("Player");
+        }
+        else if(dir.y==1)
+        {
+            anim.Play("PlayerL");
+        }
+        else if(dir.y==-1)
+        {
+            anim.Play("PlayerR");
+        }
+           
+        
     }
 }
